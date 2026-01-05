@@ -97,7 +97,7 @@ function getHeadingsFromFile(filePath) {
  */
 function getHeadingText(node) {
   let text = '';
-  visit(node, 'text', textNode => {
+  visit(node, ['text', 'inlineCode'], textNode => {
     text += textNode.value;
   });
   return text;
@@ -111,6 +111,6 @@ function slugify(text) {
   return text
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
+    .replace(/\s/g, '-')
     .trim();
 }
