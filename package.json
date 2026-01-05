@@ -1,0 +1,38 @@
+{
+  "name": "remark-validate-relative-links",
+  "version": "0.0.1",
+  "description": "Remark plugin to validate relative links",
+  "keywords": [
+    "unified",
+    "remark",
+    "remark-plugin",
+    "plugin",
+    "markdown",
+    "validate",
+    "link",
+    "image",
+    "reference",
+    "definition"
+  ],
+  "homepage": "https://github.com/webpro/remark-validate-relative-links",
+  "bugs": "https://github.com/webpro/remark-validate-relative-links/issues",
+  "repository": "github:webpro/remark-validate-relative-links",
+  "license": "ISC",
+  "author": {
+    "name": "Lars Kappert",
+    "email": "lars@webpro.nl"
+  },
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^24.10.4",
+    "@types/vfile": "^3.0.2"
+  }
+}
