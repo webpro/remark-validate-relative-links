@@ -13,7 +13,7 @@ const NAME = 'remark-validate-relative-links';
 /**
  * @returns {(tree: Root, file: VFile) => void}
  */
-export default function remarkValidateLocalLinks() {
+export default function remarkValidateRelativeLinks() {
   return (tree, file) => {
     const filePath = file.path ? resolve(file.cwd, file.path) : null;
     if (!filePath) return;
