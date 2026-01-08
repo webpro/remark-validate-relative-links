@@ -11,6 +11,8 @@ import { dirname, resolve } from 'node:path';
 const NAME = 'remark-validate-relative-links';
 
 /**
+ * Validate relative links, including headings.
+ *
  * @returns {(tree: Root, file: VFile) => void}
  */
 export default function remarkValidateRelativeLinks() {
