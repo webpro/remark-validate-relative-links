@@ -33,6 +33,10 @@
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.10.4",
-    "@types/vfile": "^3.0.2"
+    "@types/vfile": "^4.0.0",
+    "remark": "^15.0.1"
+  },
+  "scripts": {
+    "test": "node --test"
   }
 }
