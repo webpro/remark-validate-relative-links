@@ -1,9 +1,10 @@
 import { visit } from 'unist-util-visit';
+import { toString } from 'mdast-util-to-string';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 /**
- * @import { Root, Heading } from 'mdast'
+ * @import { Root } from 'mdast'
  * @import { VFile } from 'vfile'
  */
 
@@ -24,7 +25,7 @@ export default function remarkValidateRelativeLinks() {
     /** @type {Set<string>} */
     const currentHeadings = new Set();
     visit(tree, 'heading', node => {
-      const text = getHeadingText(node);
+      const text = toString(node);
       if (text) currentHeadings.add(slugify(text));
     });
 
@@ -90,18 +91,6 @@ function getHeadingsFromFile(filePath) {
     }
     return headings;
   } catch {}
-}
-
-/**
- * @param {Heading} node
- * @returns {string}
- */
-function getHeadingText(node) {
-  let text = '';
-  visit(node, ['text', 'inlineCode'], textNode => {
-    text += textNode.value;
-  });
-  return text;
 }
 
 /**
