@@ -23,6 +23,9 @@
     "email": "lars@webpro.nl"
   },
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "main": "index.js",
   "files": [
     "index.js"
