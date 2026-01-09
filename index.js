@@ -1,5 +1,6 @@
 import { visit } from 'unist-util-visit';
 import { toString } from 'mdast-util-to-string';
+import GithubSlugger from 'github-slugger';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
@@ -24,9 +25,10 @@ export default function remarkValidateRelativeLinks() {
 
     /** @type {Set<string>} */
     const currentHeadings = new Set();
+    const slugger = new GithubSlugger();
     visit(tree, 'heading', node => {
       const text = toString(node);
-      if (text) currentHeadings.add(slugify(text));
+      if (text) currentHeadings.add(slugger.slug(text));
     });
 
     visit(tree, ['link', 'image', 'definition'], node => {
@@ -84,23 +86,12 @@ function getHeadingsFromFile(filePath) {
     const content = readFileSync(filePath, 'utf8');
     /** @type {Set<string>} */
     const headings = new Set();
+    const slugger = new GithubSlugger();
     const headingRegex = /^#{1,6}\s+(.+)$/gm;
     let match;
     while ((match = headingRegex.exec(content)) !== null) {
-      headings.add(slugify(match[1]));
+      headings.add(slugger.slug(match[1]));
     }
     return headings;
   } catch {}
-}
-
-/**
- * @param {string} text
- * @returns {string}
- */
-function slugify(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s/g, '-')
-    .trim();
 }
