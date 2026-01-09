@@ -13,3 +13,7 @@
 [ok]: ./doc.md#okay
 
 [bad]: ./doc.md#missing
+
+[local](target.md#there) [header-missing](target.md#missing) [local-missing](missing.md)
+
+[proto](mailto:x@y.com) [root](/foo)

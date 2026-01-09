@@ -45,7 +45,7 @@ export default function remarkValidateRelativeLinks() {
         return;
       }
 
-      if (!url.startsWith('.')) return;
+      if (url.startsWith('/') || URL.canParse(url)) return;
 
       const hashIndex = url.indexOf('#');
       const urlPath = hashIndex === -1 ? url : url.slice(0, hashIndex);

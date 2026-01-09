@@ -22,17 +22,20 @@ test('remark-validate-relative-links', async () => {
   const value = await loadFixture('readme.md');
   const messages = await runMarkdown(fixturesDir, 'readme.md', value);
 
-  assert.equal(messages.length, 4);
+  assert.equal(messages.length, 6);
   assert.ok(messages.every(m => m.source === 'remark-validate-relative-links'));
 
   const missingFiles = messages.filter(m => m.ruleId === 'missing-file');
-  assert.equal(missingFiles.length, 1);
+  assert.equal(missingFiles.length, 2);
   assert.ok(
     messages.some(m => m.reason.includes('Cannot find file `./missing.md`'))
   );
+  assert.ok(
+    messages.some(m => m.reason.includes('Cannot find file `missing.md`'))
+  );
 
   const missingHeadings = messages.filter(m => m.ruleId === 'missing-heading');
-  assert.equal(missingHeadings.length, 3);
+  assert.equal(missingHeadings.length, 4);
   assert.ok(
     messages.some(m =>
       m.reason.includes('Cannot find heading `#bravo` in this file')
@@ -46,6 +49,11 @@ test('remark-validate-relative-links', async () => {
   assert.ok(
     messages.some(m =>
       m.reason.includes('Cannot find heading `#missing` in `./doc.md`')
+    )
+  );
+  assert.ok(
+    messages.some(m =>
+      m.reason.includes('Cannot find heading `#missing` in `target.md`')
     )
   );
 });
