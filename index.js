@@ -3,9 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 /**
- * @typedef {import('mdast').Root} Root
- * @typedef {import('mdast').Heading} Heading
- * @typedef {import('vfile').VFile} VFile
+ * @import { Root, Heading } from 'mdast'
+ * @import { VFile } from 'vfile'
  */
 
 const NAME = 'remark-validate-relative-links';
