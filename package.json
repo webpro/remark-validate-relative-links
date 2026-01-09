@@ -1,6 +1,6 @@
 {
   "name": "remark-validate-relative-links",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Remark plugin to validate relative links",
   "keywords": [
     "unified",
