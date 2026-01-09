@@ -6,15 +6,15 @@ Validate relative links, including headings.
 
 ### Input
 
+```markdown
 These [example](#example) [links](./README.md) are [all][1] fine.
 
 [Missing](#notfound) [links](./link) give warnings.
 
 [External](https://github.com/webpro/remark-validate-relative-links) and [absolute][2] links are ignored.
+```
 
 ### Output
-
-Example output:
 
 ```sh
 README.md
